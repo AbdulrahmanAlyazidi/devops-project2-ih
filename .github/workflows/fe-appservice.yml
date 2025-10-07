@@ -31,8 +31,8 @@ jobs:
 
       - name: Build
         run: npm run build
+        # مخرجات Vite تكون في مجلد dist/
 
-      # نرفع مجلد build إلى wwwroot للتطبيق مباشرة
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
