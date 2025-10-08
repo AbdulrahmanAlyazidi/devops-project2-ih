@@ -8,20 +8,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebConfig {
 
-  @Bean
-  public WebMvcConfigurer corsConfigurer() {
-    return new WebMvcConfigurer() {
-      @Override
-      public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/api/**")
-            .allowedOrigins(
-                "https://alyazidi-fe2-fff3b8bhareqdcck.eastus2-01.azurewebsites.net"
-            )
-            .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-            .allowedHeaders("*")
-            .allowCredentials(false)
-            .maxAge(3600);
-      }
-    };
-  }
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/**")
+                        .allowedOrigins("*")   // أو حط دومين الفرونت إذا تبغى تقييد
+                        .allowedMethods("GET","POST","PUT","DELETE","OPTIONS","PATCH")
+                        .allowedHeaders("*");
+            }
+        };
+    }
 }
